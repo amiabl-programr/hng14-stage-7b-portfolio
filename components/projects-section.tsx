@@ -17,18 +17,6 @@ const projects = [
     liveUrl: "https://github.com/amiabl-programr/hng14-stage-8a-retry-engine",
   },
   {
-    name: "Portfolio Website",
-    initials: "PW",
-    description: "Minimalist backend portfolio built with Next.js, featuring project showcase and skills mapping.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
-    contributions: [
-      "Designed clean, readable layout optimized for 3-5 minute reviewer scans",
-      "Built component-based architecture with intersection observer animations",
-      "Integrated dark/light theme toggle with system preference detection",
-    ],
-    liveUrl: null,
-  },
-  {
     name: "Profiles API",
     initials: "PA",
     description: "Intelligence query engine with rule-based natural language parsing, filtering, and pagination over 2000+ demographic profiles.",
