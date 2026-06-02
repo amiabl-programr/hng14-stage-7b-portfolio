@@ -12,7 +12,10 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Victor Oluwayemi - Backend Engineer",
   description: "Backend engineer specializing in distributed systems, API design, and database optimization.",
-  generator: "v0.app",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.png",
+  },
 }
 
 export default function RootLayout({
