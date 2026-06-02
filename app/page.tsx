@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react"
 import SiteNav from "@/components/site-nav"
 import ProfileSection from "@/components/profile-section"
-import ProjectsSection from "@/components/projects-section"
 import FeaturedSection from "@/components/featured-section"
+import SkillsSection from "@/components/skills-section"
+import ProjectsSection from "@/components/projects-section"
 import LearnedSection from "@/components/learned-section"
 import ContactSection from "@/components/contact-section"
 import SiteFooter from "@/components/site-footer"
@@ -49,9 +50,10 @@ export default function Home() {
       <main className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
         <ProfileSection ref={(el) => (sectionsRef.current[0] = el)} />
         <FeaturedSection ref={(el) => (sectionsRef.current[1] = el)} />
-        <ProjectsSection ref={(el) => (sectionsRef.current[2] = el)} />
-        <LearnedSection ref={(el) => (sectionsRef.current[3] = el)} />
-        <ContactSection ref={(el) => (sectionsRef.current[4] = el)} />
+        <SkillsSection ref={(el) => (sectionsRef.current[2] = el)} />
+        <ProjectsSection ref={(el) => (sectionsRef.current[3] = el)} />
+        <LearnedSection ref={(el) => (sectionsRef.current[4] = el)} />
+        <ContactSection ref={(el) => (sectionsRef.current[5] = el)} />
         <SiteFooter isDark={isDark} toggleTheme={toggleTheme} />
       </main>
 
