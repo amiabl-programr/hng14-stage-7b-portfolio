@@ -11,10 +11,17 @@ const ProfileSection = forwardRef<HTMLElement>((props, ref) => {
     >
       <div className="w-full space-y-8">
         <div className="space-y-4">
-          <div className="text-sm text-muted-foreground font-mono tracking-wider">BACKEND ENGINEER</div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-            Victor Oluwayemi
-          </h1>
+          <div className="flex items-center gap-5">
+            <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-lg font-medium text-accent-foreground shrink-0">
+              VO
+            </div>
+            <div>
+              <div className="text-sm text-muted-foreground font-mono tracking-wider">BACKEND ENGINEER</div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
+                Victor Oluwayemi
+              </h1>
+            </div>
+          </div>
         </div>
 
         <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">

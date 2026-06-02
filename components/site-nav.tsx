@@ -2,7 +2,7 @@ interface SiteNavProps {
   activeSection: string
 }
 
-const sections = ["profile", "projects", "featured", "learned", "contact"]
+const sections = ["profile", "featured", "projects", "learned", "contact"]
 
 export default function SiteNav({ activeSection }: SiteNavProps) {
   return (

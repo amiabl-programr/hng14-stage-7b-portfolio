@@ -48,8 +48,8 @@ export default function Home() {
 
       <main className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
         <ProfileSection ref={(el) => (sectionsRef.current[0] = el)} />
-        <ProjectsSection ref={(el) => (sectionsRef.current[1] = el)} />
-        <FeaturedSection ref={(el) => (sectionsRef.current[2] = el)} />
+        <FeaturedSection ref={(el) => (sectionsRef.current[1] = el)} />
+        <ProjectsSection ref={(el) => (sectionsRef.current[2] = el)} />
         <LearnedSection ref={(el) => (sectionsRef.current[3] = el)} />
         <ContactSection ref={(el) => (sectionsRef.current[4] = el)} />
         <SiteFooter isDark={isDark} toggleTheme={toggleTheme} />
