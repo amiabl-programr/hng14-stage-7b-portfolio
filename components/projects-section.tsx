@@ -28,6 +28,19 @@ const projects = [
     ],
     liveUrl: null,
   },
+  {
+    name: "Profiles API",
+    initials: "PA",
+    description: "Intelligence query engine with rule-based natural language parsing, filtering, and pagination over 2000+ demographic profiles.",
+    tech: ["TypeScript", "Express", "PostgreSQL", "Prisma", "UUID v7"],
+    contributions: [
+      "Built rule-based NLP parser that translates plain English queries (e.g. 'young males from nigeria') into structured filters",
+      "Designed PostgreSQL schema with Prisma ORM supporting combined filter, sort, and pagination queries",
+      "Implemented idempotent database seeding for 2026 profiles with UUID v7 primary keys",
+      "Deployed live API endpoint with CORS, comprehensive error handling, and full README documentation",
+    ],
+    liveUrl: "https://hng14-stage-2-task-intelligence-que.vercel.app",
+  },
 ]
 
 const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
