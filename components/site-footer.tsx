@@ -15,7 +15,7 @@ export default function SiteFooter({ isDark, toggleTheme }: SiteFooterProps) {
             href="https://hng.tech" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-foreground hover:text-muted-foreground transition-colors"
+            className="text-foreground hover:text-accent transition-colors"
           >
             HNG Internship
           </Link>

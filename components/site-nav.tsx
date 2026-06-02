@@ -2,7 +2,7 @@ interface SiteNavProps {
   activeSection: string
 }
 
-const sections = ["profile", "featured", "projects", "learned", "contact"]
+const sections = ["profile", "featured", "skills", "projects", "learned", "contact"]
 
 export default function SiteNav({ activeSection }: SiteNavProps) {
   return (
@@ -13,7 +13,7 @@ export default function SiteNav({ activeSection }: SiteNavProps) {
             key={section}
             onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
             className={`w-2 h-8 rounded-full transition-all duration-500 ${
-              activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+              activeSection === section ? "bg-accent" : "bg-muted-foreground/30 hover:bg-accent/60"
             }`}
             aria-label={`Navigate to ${section}`}
           />
