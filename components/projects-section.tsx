@@ -40,6 +40,7 @@ const projects = [
       "Authored the RFC covering problem statement, API contract, cross-track impact assessment, risk mitigations, and trade-off documentation",
       "Documented known race condition boundary (concurrent checks for same username) and deferred fix with clear rationale to stakeholders",
     ],
+    image: "/username-architecture.png",
     liveUrl: null,
   },
 ]
@@ -84,6 +85,16 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
                   </div>
+
+                  {"image" in project && project.image && (
+                    <Link href={project.image} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={project.image}
+                        alt={`${project.name} architecture diagram`}
+                        className="w-full h-32 object-cover rounded-md border border-border bg-muted/50 mt-2"
+                      />
+                    </Link>
+                  )}
                   
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
