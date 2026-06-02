@@ -15,7 +15,7 @@ const ProfileSection = forwardRef<HTMLElement>((props, ref) => {
             <img
               src="/victor.jpg"
               alt="Victor Oluwayemi"
-              className="w-16 h-16 rounded-full object-cover shrink-0"
+              className="w-24 h-24 rounded-full object-cover shrink-0"
             />
             <div>
               <div className="text-sm text-accent font-mono tracking-wider">BACKEND ENGINEER</div>
