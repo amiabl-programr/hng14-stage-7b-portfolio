@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 import { forwardRef } from "react"
 
 const ContactSection = forwardRef<HTMLElement>((props, ref) => {
@@ -21,40 +21,22 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
             <div className="text-sm text-muted-foreground font-mono">DIRECT CONTACT</div>
             <div className="space-y-4">
               <Link
-                href="mailto:alex@example.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                <span>alex@example.com</span>
-              </Link>
-              <Link
-                href="https://github.com/alexchen"
+                href="https://github.com/amiabl-programr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
               >
                 <Github className="w-5 h-5" />
-                <span>github.com/alexchen</span>
+                <span>github.com/amiabl-programr</span>
               </Link>
               <Link
-                href="https://linkedin.com/in/alexchen"
+                href="https://linkedin.com/in/victor-oluwayemi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
-                <span>linkedin.com/in/alexchen</span>
-              </Link>
-              <Link
-                href="https://twitter.com/alexchen"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-                <span>@alexchen</span>
+                <span>linkedin.com/in/victor-oluwayemi</span>
               </Link>
             </div>
           </div>
