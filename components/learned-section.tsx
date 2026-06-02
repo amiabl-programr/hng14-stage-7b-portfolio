@@ -2,8 +2,8 @@ import { forwardRef } from "react"
 
 const insights = [
   {
-    title: "Production Debugging",
-    text: "When a service fails at 2 AM with users waiting, you learn to read logs faster, write better error messages, and instrument everything that matters.",
+    title: "Ship Confidently",
+    text: "Learned to ship from dev to staging to production, preventing unexpected breakage. Also learned to make database migrations idempotent so they can be run safely across environments.",
   },
   {
     title: "API Design First",
@@ -14,8 +14,8 @@ const insights = [
     text: "Working with retry queues and background jobs changed how I decouple services — I now reach for async processing instead of blocking on every request.",
   },
   {
-    title: "Tests as Design",
-    text: "Writing tests forces you to think through what the code should actually do. It's not an afterthought — it shapes the architecture from the start.",
+    title: "Testing Matters",
+    text: "Tests ensure your project always works. Regression tests guarantee what worked last week still works today. Also learned nock for HTTP mocking and fact-check for assertions.",
   },
 ]
 
