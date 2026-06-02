@@ -1,8 +1,11 @@
 import Link from "next/link"
 import { Github, Linkedin } from "lucide-react"
 import { forwardRef } from "react"
+import { useForm, ValidationError } from "@formspree/react"
 
 const ContactSection = forwardRef<HTMLElement>((props, ref) => {
+  const [state, handleSubmit] = useForm("maqkrpqq")
+
   return (
     <section 
       id="contact" 
@@ -43,32 +46,41 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
 
           <div className="space-y-6">
             <div className="text-sm text-muted-foreground font-mono">SEND A MESSAGE</div>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm text-muted-foreground">Your email</label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg focus:outline-none focus:border-muted-foreground transition-colors"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm text-muted-foreground">Message</label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  placeholder="What can I help you with?"
-                  className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg resize-none focus:outline-none focus:border-muted-foreground transition-colors"
-                />
-              </div>
-              <button
-                type="submit"
-                className="px-4 py-2 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors"
-              >
-                Send message
-              </button>
-            </form>
+            {state.succeeded ? (
+              <p className="text-sm text-green-600 dark:text-green-400">Thanks for reaching out. I'll get back to you soon.</p>
+            ) : (
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm text-muted-foreground">Your email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg focus:outline-none focus:border-muted-foreground transition-colors"
+                  />
+                  <ValidationError field="email" errors={state.errors} />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm text-muted-foreground">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg resize-none focus:outline-none focus:border-muted-foreground transition-colors"
+                  />
+                  <ValidationError field="message" errors={state.errors} />
+                </div>
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="px-4 py-2 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors disabled:opacity-50"
+                >
+                  {state.submitting ? "Sending..." : "Send message"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

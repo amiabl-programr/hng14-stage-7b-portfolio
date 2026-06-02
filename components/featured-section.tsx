@@ -1,35 +1,37 @@
 import { forwardRef } from "react"
 
 const endpoints = [
-  { method: "WS", path: "/ws/connect", desc: "Establish WebSocket with JWT auth" },
-  { method: "POST", path: "/tasks", desc: "Create task, broadcast to assignees" },
-  { method: "PATCH", path: "/tasks/:id/status", desc: "Update status, notify watchers" },
-  { method: "POST", path: "/tasks/:id/comments", desc: "Add comment, push to thread subscribers" },
-  { method: "GET", path: "/notifications", desc: "Fetch missed events (offline sync)" },
+  { method: "POST", path: "/request", desc: "Submit a new request for retry processing" },
+  { method: "GET", path: "/requests/:id", desc: "Retrieve request with full attempt history" },
+  { method: "GET", path: "/requests", desc: "List all requests, optionally filtered by status" },
 ]
 
-const architectureDiagram = `┌─────────────┐     ┌─────────────┐
-│   Client    │────▶│   Nginx     │
-│  WebSocket  │     │   (LB)      │
-└─────────────┘     └──────┬──────┘
-                           │
-            ┌──────────────┼──────────────┐
-            ▼              ▼              ▼
-     ┌───────────┐  ┌───────────┐  ┌───────────┐
-     │  Server   │  │  Server   │  │  Server   │
-     │    A      │  │    B      │  │    C      │
-     └─────┬─────┘  └─────┬─────┘  └─────┬─────┘
-           │              │              │
-           └──────────────┼──────────────┘
-                          ▼
-                   ┌─────────────┐
-                   │    Redis    │
-                   │   Pub/Sub   │
-                   └──────┬──────┘
-                          ▼
-                   ┌─────────────┐
-                   │  PostgreSQL │
-                   └─────────────┘`
+const architectureDiagram = `┌──────────┐     ┌─────────────┐
+│  Client  │────▶│  Express    │
+│  (curl)  │     │   App       │
+└──────────┘     └──────┬──────┘
+                        │
+              ┌─────────▼─────────┐
+              │   Controller      │
+              │   (validation)    │
+              └─────────┬─────────┘
+                        │
+              ┌─────────▼─────────┐
+              │    Service        │
+              │  (business logic) │
+              └─────────┬─────────┘
+                        │
+              ┌─────────▼─────────┐
+              │     SQLite        │
+              │  requests +       │
+              │  attempts tables  │
+              └─────────┬─────────┘
+                        │
+              ┌─────────▼─────────┐
+              │  Worker (500ms)   │
+              │  polls due →      │
+              │  execute via Axios│
+              └───────────────────┘`
 
 const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
   return (
@@ -47,11 +49,11 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
         <div className="space-y-10">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 bg-muted rounded-lg flex items-center justify-center text-lg font-medium text-muted-foreground">
-              TS
+              RE
             </div>
             <div>
-              <h3 className="text-xl font-medium">TeamSync API</h3>
-              <p className="text-sm text-muted-foreground">Real-time collaboration backend</p>
+              <h3 className="text-xl font-medium">Retry Engine</h3>
+              <p className="text-sm text-muted-foreground">Resilient HTTP request retry engine</p>
             </div>
           </div>
 
@@ -60,22 +62,23 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
               <div className="space-y-3">
                 <div className="text-sm text-muted-foreground font-mono">PROBLEM</div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Teams needed real-time task updates without constant polling. The existing REST API created 
-                  unnecessary load with clients checking for changes every few seconds. We needed sub-second 
-                  delivery for task assignments, status changes, and mentions across distributed team members.
+                  External API calls fail unpredictably — timeouts, 5xx errors, transient network blips. 
+                  A naive caller either gives up too early or spins in a tight loop burning resources. 
+                  Needed a resilient system that automatically retries failed requests with sane backoff, 
+                  tracks every attempt with full visibility, and surfaces failures when they're truly terminal.
                 </p>
               </div>
 
               <div className="space-y-3">
                 <div className="text-sm text-muted-foreground font-mono">CHALLENGE</div>
                 <div className="space-y-2">
-                  <p className="text-sm font-medium">Scaling WebSocket connections across multiple server instances</p>
+                  <p className="text-sm font-medium">Preventing double-execution in a polling worker</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Single-server WebSocket worked fine in dev, but production needed horizontal scaling. 
-                    Connections on Server A needed to receive events triggered on Server B. Solved with 
-                    Redis pub/sub as the message broker—each server subscribes to relevant channels and 
-                    broadcasts to its local connections. Added connection affinity via consistent hashing 
-                    to reduce cross-server chatter for team-specific events.
+                    The worker polls every 500ms for due requests. If a request execution takes longer 
+                    than the poll interval, the same request could be picked up twice. Solved with a 
+                    lock mechanism — before executing, the request's nextRetryAt is set 30s into the 
+                    future (LOCK_DURATION), removing it from the due set. The lock is released when 
+                    execution finishes and the next retry is scheduled with the real computed delay.
                   </p>
                 </div>
               </div>
@@ -95,13 +98,9 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
                   {endpoints.map((endpoint, i) => (
                     <div key={i} className="flex items-start gap-3 text-sm">
                       <code className={`px-1.5 py-0.5 rounded text-xs font-mono shrink-0 ${
-                        endpoint.method === "WS" 
-                          ? "bg-green-500/10 text-green-600 dark:text-green-400" 
-                          : endpoint.method === "POST" 
-                            ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                            : endpoint.method === "PATCH"
-                              ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                              : "bg-muted text-muted-foreground"
+                        endpoint.method === "POST" 
+                          ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                          : "bg-muted text-muted-foreground"
                       }`}>
                         {endpoint.method}
                       </code>
