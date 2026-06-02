@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Github, Linkedin, Twitter, MapPin } from "lucide-react"
+import { Github, Linkedin, MapPin } from "lucide-react"
 import { forwardRef } from "react"
 
 const ProfileSection = forwardRef<HTMLElement>((props, ref) => {
@@ -13,7 +13,7 @@ const ProfileSection = forwardRef<HTMLElement>((props, ref) => {
         <div className="space-y-4">
           <div className="text-sm text-muted-foreground font-mono tracking-wider">BACKEND ENGINEER</div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-            Alex Chen
+            Victor Oluwayemi
           </h1>
         </div>
 
@@ -37,32 +37,18 @@ const ProfileSection = forwardRef<HTMLElement>((props, ref) => {
           <div className="text-sm text-muted-foreground font-mono">CONTACT</div>
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             <Link 
-              href="mailto:alex@example.com" 
-              className="flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              alex@example.com
-            </Link>
-            <Link 
-              href="https://github.com/alexchen" 
+              href="https://github.com/amiabl-programr" 
               className="flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors"
             >
               <Github className="w-4 h-4" />
-              alexchen
+              amiabl-programr
             </Link>
             <Link 
-              href="https://linkedin.com/in/alexchen" 
+              href="https://linkedin.com/in/victor-oluwayemi" 
               className="flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors"
             >
               <Linkedin className="w-4 h-4" />
-              alexchen
-            </Link>
-            <Link 
-              href="https://twitter.com/alexchen" 
-              className="flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors"
-            >
-              <Twitter className="w-4 h-4" />
-              @alexchen
+              victor-oluwayemi
             </Link>
           </div>
         </div>
