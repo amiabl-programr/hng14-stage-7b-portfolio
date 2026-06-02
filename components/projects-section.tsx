@@ -58,7 +58,7 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
           <div className="text-sm text-muted-foreground font-mono">HNG INTERNSHIP</div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 max-w-2xl">
           {projects.map((project, index) => (
             <div
               key={index}
