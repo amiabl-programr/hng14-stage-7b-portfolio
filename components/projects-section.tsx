@@ -41,6 +41,19 @@ const projects = [
     ],
     liveUrl: "https://hng14-stage-2-task-intelligence-que.vercel.app",
   },
+  {
+    name: "Open Profile",
+    initials: "OP",
+    description: "Public username validation endpoint acting as the single source of truth for format rules, blocked keywords, and real-time availability checks — built for a team platform.",
+    tech: ["TypeScript", "Express", "Redis", "PostgreSQL", "Rate Limiting"],
+    contributions: [
+      "Designed validation pipeline: normalization (trim, lowercase, reject ambiguous Unicode) → format rules (3-30 chars, letters/numbers/hyphens only) → keyword blocklist → DB availability check",
+      "Implemented Redis-backed rate limiting at 60 req/min/IP with graceful degradation fallback during Redis outages",
+      "Authored the RFC covering problem statement, API contract, cross-track impact assessment, risk mitigations, and trade-off documentation",
+      "Documented known race condition boundary (concurrent checks for same username) and deferred fix with clear rationale to stakeholders",
+    ],
+    liveUrl: null,
+  },
 ]
 
 const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {

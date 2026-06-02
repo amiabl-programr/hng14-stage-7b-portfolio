@@ -3,13 +3,18 @@ import { forwardRef } from "react"
 const skills = [
   {
     name: "API Design",
-    description: "RESTful endpoints with filtering, sorting, pagination, and natural language query parsing",
-    project: "Profiles API",
+    description: "RESTful versioned endpoints with validation pipelines, normalization rules, and rate-limited public access",
+    project: "Profiles API + Open Profile",
   },
   {
     name: "Databases",
     description: "PostgreSQL with Prisma ORM, SQLite with better-sqlite3, schema design with compound indexes",
-    project: "Retry Engine + Profiles API",
+    project: "Retry Engine + Profiles API + Open Profile",
+  },
+  {
+    name: "Rate Limiting",
+    description: "Redis-backed rate limiting with graceful degradation fallback during cache outages",
+    project: "Open Profile",
   },
   {
     name: "Background Jobs",
