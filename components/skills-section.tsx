@@ -41,11 +41,6 @@ const skills = [
     description: "API docs with endpoint tables, error reference, natural language parsing logic, and troubleshooting guides",
     project: "Profiles API + Retry Engine",
   },
-  {
-    name: "Deployment",
-    description: "Live API deployment on Vercel with environment configuration and CORS setup",
-    project: "Profiles API",
-  },
 ]
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
