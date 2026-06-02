@@ -53,7 +53,7 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="space-y-12">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl sm:text-3xl font-light">Skills</h2>
-          <div className="text-sm text-muted-foreground font-mono">BACKED BY PROJECTS</div>
+          <div className="text-sm text-accent font-mono">BACKED BY PROJECTS</div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

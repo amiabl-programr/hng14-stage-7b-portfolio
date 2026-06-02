@@ -21,13 +21,13 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="text-sm text-muted-foreground font-mono">DIRECT CONTACT</div>
+            <div className="text-sm text-accent font-mono">DIRECT CONTACT</div>
             <div className="space-y-4">
               <Link
                 href="https://github.com/amiabl-programr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
+                className="flex items-center gap-3 text-foreground hover:text-accent transition-colors"
               >
                 <Github className="w-5 h-5" />
                 <span>github.com/amiabl-programr</span>
@@ -36,7 +36,7 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
                 href="https://linkedin.com/in/victor-oluwayemi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors"
+                className="flex items-center gap-3 text-foreground hover:text-accent transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
                 <span>linkedin.com/in/victor-oluwayemi</span>
@@ -45,7 +45,7 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
           </div>
 
           <div className="space-y-6">
-            <div className="text-sm text-muted-foreground font-mono">SEND A MESSAGE</div>
+            <div className="text-sm text-accent font-mono">SEND A MESSAGE</div>
             {state.succeeded ? (
               <p className="text-sm text-green-600 dark:text-green-400">Thanks for reaching out. I'll get back to you soon.</p>
             ) : (
@@ -57,7 +57,7 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
                     type="email"
                     name="email"
                     required
-                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg focus:outline-none focus:border-muted-foreground transition-colors"
+                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg focus:outline-none focus:border-accent transition-colors"
                   />
                   <ValidationError field="email" errors={state.errors} />
                 </div>
@@ -68,14 +68,14 @@ const ContactSection = forwardRef<HTMLElement>((props, ref) => {
                     name="message"
                     rows={4}
                     required
-                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg resize-none focus:outline-none focus:border-muted-foreground transition-colors"
+                    className="w-full px-3 py-2 text-sm bg-transparent border border-border rounded-lg resize-none focus:outline-none focus:border-accent transition-colors"
                   />
                   <ValidationError field="message" errors={state.errors} />
                 </div>
                 <button
                   type="submit"
                   disabled={state.submitting}
-                  className="px-4 py-2 text-sm border border-border rounded-lg hover:border-muted-foreground/50 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 text-sm border border-accent/50 text-accent rounded-lg hover:bg-accent/10 transition-colors disabled:opacity-50"
                 >
                   {state.submitting ? "Sending..." : "Send message"}
                 </button>

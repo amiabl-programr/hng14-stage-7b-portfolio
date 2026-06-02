@@ -55,7 +55,7 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="space-y-12">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl sm:text-3xl font-light">Projects</h2>
-          <div className="text-sm text-muted-foreground font-mono">HNG INTERNSHIP</div>
+          <div className="text-sm text-accent font-mono">HNG INTERNSHIP</div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 max-w-2xl">
@@ -65,7 +65,7 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
               className="group p-6 border border-border rounded-lg hover:border-muted-foreground/50 transition-colors"
             >
               <div className="flex gap-4">
-                <div className="w-12 h-12 shrink-0 bg-muted rounded-lg flex items-center justify-center text-sm font-medium text-muted-foreground">
+                <div className="w-12 h-12 shrink-0 bg-accent/10 text-accent rounded-lg flex items-center justify-center text-sm font-medium">
                   {project.initials}
                 </div>
                 <div className="space-y-3 flex-1 min-w-0">
@@ -75,7 +75,7 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                       {project.liveUrl && (
                         <Link
                           href={project.liveUrl}
-                          className="text-muted-foreground hover:text-foreground transition-colors"
+                          className="text-muted-foreground hover:text-accent transition-colors"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -85,18 +85,21 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
                   </div>
+                </div>
+              </div>
 
-                  {"image" in project && project.image && (
-                    <Link href={project.image} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src={project.image}
-                        alt={`${project.name} architecture diagram`}
-                        className="w-full h-32 object-cover rounded-md border border-border bg-muted/50 mt-2"
-                      />
-                    </Link>
-                  )}
-                  
-                  <div className="flex flex-wrap gap-2">
+              {"image" in project && project.image && (
+                <Link href={project.image} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={project.image}
+                    alt={`${project.name} architecture diagram`}
+                    className="w-full h-36 object-cover rounded-md border border-border bg-muted/50 mt-4"
+                  />
+                </Link>
+              )}
+              
+              <div className="space-y-3 mt-4">
+                <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
@@ -108,7 +111,7 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                   </div>
 
                   <div className="space-y-1.5 pt-2">
-                    <div className="text-xs text-muted-foreground font-mono">BUILT</div>
+                    <div className="text-xs text-accent font-mono">BUILT</div>
                     <ul className="space-y-1">
                       {project.contributions.map((item, i) => (
                         <li key={i} className="text-xs text-muted-foreground leading-relaxed flex gap-2">
@@ -118,7 +121,6 @@ const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
                       ))}
                     </ul>
                   </div>
-                </div>
               </div>
             </div>
           ))}

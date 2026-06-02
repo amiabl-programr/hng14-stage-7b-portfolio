@@ -43,12 +43,12 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="space-y-12">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl sm:text-3xl font-light">Featured Project</h2>
-          <div className="text-sm text-muted-foreground font-mono">DEEP DIVE</div>
+          <div className="text-sm text-accent font-mono">DEEP DIVE</div>
         </div>
 
         <div className="space-y-10">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-muted rounded-lg flex items-center justify-center text-lg font-medium text-muted-foreground">
+            <div className="w-14 h-14 bg-accent/10 text-accent rounded-lg flex items-center justify-center text-lg font-medium">
               RE
             </div>
             <div>
@@ -60,7 +60,7 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="space-y-3">
-                <div className="text-sm text-muted-foreground font-mono">PROBLEM</div>
+                <div className="text-sm text-accent font-mono">PROBLEM</div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   External API calls fail unpredictably — timeouts, 5xx errors, transient network blips. 
                   A naive caller either gives up too early or spins in a tight loop burning resources. 
@@ -70,7 +70,7 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
               </div>
 
               <div className="space-y-3">
-                <div className="text-sm text-muted-foreground font-mono">CHALLENGE</div>
+                <div className="text-sm text-accent font-mono">CHALLENGE</div>
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Preventing double-execution in a polling worker</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -86,14 +86,14 @@ const FeaturedSection = forwardRef<HTMLElement>((props, ref) => {
 
             <div className="space-y-6">
               <div className="space-y-3">
-                <div className="text-sm text-muted-foreground font-mono">ARCHITECTURE</div>
+                <div className="text-sm text-accent font-mono">ARCHITECTURE</div>
                 <div className="bg-muted/50 border border-border rounded-lg p-4 font-mono text-xs text-muted-foreground">
                   <pre className="overflow-x-auto">{architectureDiagram}</pre>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <div className="text-sm text-muted-foreground font-mono">KEY ENDPOINTS</div>
+                <div className="text-sm text-accent font-mono">KEY ENDPOINTS</div>
                 <div className="space-y-2">
                   {endpoints.map((endpoint, i) => (
                     <div key={i} className="flex items-start gap-3 text-sm">

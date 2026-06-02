@@ -29,7 +29,7 @@ const LearnedSection = forwardRef<HTMLElement>((props, ref) => {
       <div className="space-y-12">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl sm:text-3xl font-light">What I Learned</h2>
-          <div className="text-sm text-muted-foreground font-mono">REFLECTION</div>
+          <div className="text-sm text-accent font-mono">REFLECTION</div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
