@@ -38,7 +38,6 @@ const projects = [
       "Designed validation pipeline: normalization (trim, lowercase, reject ambiguous Unicode) → format rules (3-30 chars, letters/numbers/hyphens only) → keyword blocklist → DB availability check",
       "Implemented Redis-backed rate limiting at 60 req/min/IP with graceful degradation fallback during Redis outages",
       "Authored the RFC covering problem statement, API contract, cross-track impact assessment, risk mitigations, and trade-off documentation",
-      "Documented known race condition boundary (concurrent checks for same username) and deferred fix with clear rationale to stakeholders",
     ],
     image: "/username-architecture.png",
     liveUrl: null,
